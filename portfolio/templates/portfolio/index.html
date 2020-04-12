@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+{% load static %}
+<h1>My Portfolio</h1>
+
+
+
+
+<a href="{% url 'blog:all_blogs' %}">Blog</a>
+
+
+<a href="{% static 'portfolio/close-up-photo-of-abstract-background-3311533.jpg' %}">RESUME</a>
+<img src="{% static 'portfolio/closeup-photo-of-smiling-woman-wearing-blue-denim-jacket-1130626.jpg' %}" alt="" height="400">
+{% for i in projects %}
+    <h1>{{ i.title }}</h1>
+    <h1>{{ i.description }}</h1>
+    <img src="{{ i.image.url }}" alt="" height="400">
+    {% if i.url != '' %}
+        <a href="{{ i.url }}">LINK</a>
+    {% endif %}
+{% endfor %}
+</body>
+</html>
+{% endblock %}
